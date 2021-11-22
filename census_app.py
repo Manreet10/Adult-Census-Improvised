@@ -65,7 +65,7 @@ st.sidebar.subheader("Visualisation Selector")
 
 # Add a multiselect in the sidebar with label 'Select the Charts/Plots:'
 # Store the current value of this widget in a variable 'plot_list'.
-plot_list = st.sidebar.multiselect("Select plot type",('Histogram', 'Box Plot', 'Count Plot', 'Pie Chart', 'Correlation Heatmap', 'Pair Plot'))
+plot_list = st.sidebar.multiselect("Select plot type",('Box Plot', 'Count Plot', 'Pie Chart'))
 
 # Display pie plot using matplotlib module and 'st.pyplot()'
 if 'Pie Chart' in plot_list:
