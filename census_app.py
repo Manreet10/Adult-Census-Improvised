@@ -65,18 +65,21 @@ st.sidebar.subheader("Visualisation Selector")
 
 # Add a multiselect in the sidebar with label 'Select the Charts/Plots:'
 # Store the current value of this widget in a variable 'plot_list'.
-plot_list = st.sidebar.multiselect("Select plot type",('Box Plot', 'Count Plot', 'Pie Chart'))
+plot_list = st.sidebar.multiselect("Select plot type",('Pie Chart','Box Plot', 'Count Plot'))
 
 # Display pie plot using matplotlib module and 'st.pyplot()'
 if 'Pie Chart' in plot_list:
-  st.subheader("Pie Chart")
-  column = st.sidebar.multiselect("Select the column for pie chart", ('income','gender'))
-  for i in column:
-    pie_data = census_df[i].values_counts()
-    plt.figure(figsize = (5,5))
-    plt.title(f"Distribution of records for different {i} groups")
-    plt.pie(pie_data,labels = pie_data.index, autopct = '%1.2f%%',startangle = 30,explode = np.linspace(.01,.05,len(pie_data)))
-    st.pyplot()
+    st.subheader("Pie Chart")
+    column = st.sidebar.multiselect("Select the column for pie chart",
+                                  ('income', 'gender'))
+    
+    for i in column:
+      pie_data = census_df[i].value_counts()
+      plt.figure(figsize = (5, 5))
+      plt.title(f"Distribution of records for different {i} groups")
+      plt.pie(pie_data, labels = pie_data.index, autopct = '%1.2f%%', 
+              startangle = 30, explode = np.linspace(.01, .05, len(pie_data)))
+      st.pyplot()
   
 
 
